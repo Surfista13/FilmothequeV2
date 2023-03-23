@@ -27,10 +27,13 @@ public class MovieServiceMock implements MovieService{
         //Création d'une liste de films
         extractedMovies();
         //Ajout d'acteurs aux films
-        List<Participant> participants2 = getParticipantList();
-        List<Participant> participants3 = getParticipants(participants2);
-        List<Participant> participants4 = getParticipantList(participants2, 7, 5, 6, 2);
-        ajoutActeurs(participants2, participants3, participants4);
+        List<Participant> participants2 = new ArrayList<>();
+        participants2.add(participants.get(0));
+        participants2.add(participants.get(1));
+        participants2.add(participants.get(2));
+        participants2.add(participants.get(3));
+        participants2.add(participants.get(4));
+        ajoutActeurs(participants2, participants2, participants2);
     }
 
     private void ajoutActeurs(List<Participant> participants2, List<Participant> participants3, List<Participant> participants4) {
@@ -42,32 +45,17 @@ public class MovieServiceMock implements MovieService{
         movies.get(5).setActors(participants4);
     }
 
-    private List<Participant> getParticipantList(List<Participant> participants2, int index, int index1, int index2, int index3) {
-        List<Participant> participants4 = new ArrayList<>();
-        participants2.add(participants.get(index));
-        participants2.add(participants.get(index1));
-        participants2.add(participants.get(index2));
-        participants2.add(participants.get(index3));
-        return participants4;
-    }
-
-    private List<Participant> getParticipants(List<Participant> participants2) {
-        List<Participant> participants3 = getParticipantList(participants2, 0, 1, 2, 6);
-        participants2.add(participants.get(7));
-        return participants3;
-    }
-
     private void extractedMovies() {
         movies = new ArrayList<>();
-        this.movies.add(new Movie(0,"Le parrain",1979,160,"Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie",genres.get(5),participants.get(2)));
-        this.movies.add(new Movie(1,"Le bon, la brute et le truand",1960,180,"On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer",genres.get(4),participants.get(2)));
+        this.movies.add(new Movie(0,"Le parrain",1979,160,"Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",genres.get(5),participants.get(2)));
+        this.movies.add(new Movie(1,"Le bon et la brute",1960,180,"On sait depuis longtemps que travailler avec du texte lisible,travailler avec du texte lisible",genres.get(4),participants.get(2)));
         this.movies.add(new Movie(2,"Heat",1995,120,"Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles",genres.get(2),participants.get(4)));
         this.movies.add(new Movie(3,"StarWars",1999,90,"Tous les générateurs de Lorem Ipsum sur Internet tendent à reproduire le même extrait sans fin",genres.get(8),participants.get(5)));
-        this.movies.add(new Movie(4,"Heat",1980,105,"L'extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux.",genres.get(7),participants.get(1)));
-        this.movies.add(new Movie(5,"Heat",2020,110,"Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum,",genres.get(1),participants.get(0)));
+        this.movies.add(new Movie(4,"Didier",1980,105,"L'extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux.",genres.get(7),participants.get(1)));
+        this.movies.add(new Movie(5,"Men in black",2020,110,"Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé,College, en Virginie\"",genres.get(1),participants.get(0)));
 
-        movies.get(0).setUrlImage("images/1.png");
-        movies.get(1).setUrlImage("images/2.png");
+        movies.get(0).setUrlImage("/images/1.png");
+        movies.get(1).setUrlImage("/images/2.png");
         movies.get(2).setUrlImage("/images/3.png");
         movies.get(3).setUrlImage("/images/4.png");
         movies.get(4).setUrlImage("/images/5.png");
@@ -107,16 +95,6 @@ public class MovieServiceMock implements MovieService{
         participants.add(new Participant(14,"Brando","Marlon"));
         participants.add(new Participant(15,"Pesci","Joe"));
         participants.add(new Participant(16,"Bergman","David"));
-    }
-
-    private List<Participant> getParticipantList() {
-        List<Participant> participants2 = new ArrayList<>();
-        participants2.add(participants.get(0));
-        participants2.add(participants.get(1));
-        participants2.add(participants.get(2));
-        participants2.add(participants.get(3));
-        participants2.add(participants.get(4));
-        return participants2;
     }
 
     /**

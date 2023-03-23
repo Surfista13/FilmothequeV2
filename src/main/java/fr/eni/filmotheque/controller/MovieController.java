@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -40,25 +39,38 @@ public class MovieController {
         return movieService.getMovieById(id);
     }
 
+    /**
+     * Méthode permettant de renvoyer la liste des films ainsi que la date et heure au moment de l'appel
+     * @param model injection du Model
+     * @return renvoi vers la page d'accueil avec la liste des films
+     */
     @GetMapping("/")
-    public String home(){
-        return "accueil";
-    }
-    @GetMapping("/vuefilms")
     public String listeDesFilms(Model model){
         List<Movie> movies = movieService.getAllMovies();
         LocalDateTime date = LocalDateTime.now();
         model.addAttribute("movies", movies);
         model.addAttribute("localDateTime", date);
-        return "vuefilms";
+        return "accueil";
     }
 
+    /**
+     * Méthode permettant de renvoyer un film en fonction de son id. Si l'id n'est pas connu renvoi vers une page 404
+     * @param id clé primaire du film en base
+     * @param model injection du Model
+     * @return renvoi vers la page détail film ou vers page 404
+     */
     @GetMapping("/detailfilm/{id}")
     public String detailFilm(@PathVariable(value="id") long id, Model model){
-        Movie movie = movieService.getMovieById(id).get();
-        model.addAttribute("movie", movie);
-        return "detailfilm";
+        String dataToReturn;
+        Optional<Movie> movie = movieService.getMovieById(id);
+        if(movie.isEmpty()){
+            dataToReturn = "error";
+            model.addAttribute("erreur", 404);
+        } else {
+            model.addAttribute("movie", movie);
+            dataToReturn = "detail";
+        }
+        return dataToReturn;
     }
-
 
 }
