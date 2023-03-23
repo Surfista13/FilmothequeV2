@@ -11,6 +11,7 @@ public class Movie {
     private String synopsis;
     private Genre genre;
     private Participant director;
+    private String urlImage;
     private List<Participant> actors;
 
     public  Movie(){
@@ -112,4 +113,11 @@ public class Movie {
         this.director = director;
     }
 
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
 }

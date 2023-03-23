@@ -9,13 +9,15 @@
 <body>
 <div th:insert="header"></div>
 <h1>Les films de l'ENI</h1>
-<table border="1">
+<h1 th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm:ss')}"></h1>
+<table>
     <thead>
     <tr>
         <th>Genre</th>
         <th>Année</th>
         <th>Titre</th>
         <th>Réalisateur</th>
+        <th>Image</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -25,6 +27,7 @@
         <td th:text="${movie.year}"></td>
         <td th:text="${movie.title}"></td>
         <td th:text="${movie.director.firstName + ' ' +movie.director.lastName }"></td>
+        <td><img th:src="@{${movie.urlImage}}"></td>
         <td><a th:href="@{/detailfilm/{id}(id=${movie.id})}">Détails</a></td>
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

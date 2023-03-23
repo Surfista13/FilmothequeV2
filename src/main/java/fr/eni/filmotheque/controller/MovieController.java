@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +47,9 @@ public class MovieController {
     @GetMapping("/vuefilms")
     public String listeDesFilms(Model model){
         List<Movie> movies = movieService.getAllMovies();
+        LocalDateTime date = LocalDateTime.now();
         model.addAttribute("movies", movies);
+        model.addAttribute("localDateTime", date);
         return "vuefilms";
     }
 

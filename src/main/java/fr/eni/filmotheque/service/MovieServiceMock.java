@@ -65,6 +65,14 @@ public class MovieServiceMock implements MovieService{
         this.movies.add(new Movie(3,"StarWars",1999,90,"Tous les générateurs de Lorem Ipsum sur Internet tendent à reproduire le même extrait sans fin",genres.get(8),participants.get(5)));
         this.movies.add(new Movie(4,"Heat",1980,105,"L'extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux.",genres.get(7),participants.get(1)));
         this.movies.add(new Movie(5,"Heat",2020,110,"Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum,",genres.get(1),participants.get(0)));
+
+        movies.get(0).setUrlImage("images/1.png");
+        movies.get(1).setUrlImage("images/2.png");
+        movies.get(2).setUrlImage("/images/3.png");
+        movies.get(3).setUrlImage("/images/4.png");
+        movies.get(4).setUrlImage("/images/5.png");
+        movies.get(5).setUrlImage("/images/6.png");
+
     }
 
     private void extractedGenres() {
