@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Acceuil Filmothèque</title>
-    <div th:insert="fragments/head"></div>
+    <div th:replace="fragments/head"></div>
 </head>
 <body>
 <div th:insert="fragments/header"></div>
@@ -16,7 +16,6 @@
                 <p class="lead text-muted">Retrouvez toute la séléction de films, choisie pour vous par les équipes de l'ENI.</p>
             </div>
         </section>
-
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
@@ -41,7 +40,6 @@
                 </div>
             </div>
         </div>
-
     </main>
     <div th:insert="fragments/footer"></div>
 </div>

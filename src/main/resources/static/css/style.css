@@ -19,8 +19,8 @@ body{
     font-size: 7rem;
 }
 #imgDetail:hover{
-    -ms-transform: scale(1.2); /* IE 9 */
-    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
 #imgDetail{
@@ -34,7 +34,15 @@ body{
     margin-top: 20px;
 }
 .col-md-4:hover{
-    -ms-transform: scale(1.05); /* IE 9 */
-    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    -ms-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
     transform: scale(1.05);
+}
+div.card{
+    border-radius: 30px;
+}
+img.card-img-top{
+    border-top-left-radius:30px;
+    border-top-right-radius:30px;
+    opacity: 0.9;
 }
