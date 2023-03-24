@@ -18,12 +18,23 @@ body{
 .titre404{
     font-size: 7rem;
 }
-.mb-4{
+#imgDetail:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2);
+}
+#imgDetail{
     border-radius: 10px;
+
 }
 .col-form-label{
     font-weight: bold;
 }
 .form-control{
     margin-top: 20px;
+}
+.col-md-4:hover{
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
 }
