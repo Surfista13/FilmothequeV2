@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Détail d'un film</title>
-    <div th:insert="fragments/head"></div>
+    <link rel="stylesheet" href="/css/style.css">
+    <div th:replace="fragments/head"></div>
 </head>
 <body>
     <div th:insert="fragments/header"></div>
@@ -43,6 +44,6 @@
         </div>
     </div>
     <br>
-    <div th:insert="fragments/footer"></div>
+    <div th:replace="fragments/footer"></div>
 </body>
 </html>

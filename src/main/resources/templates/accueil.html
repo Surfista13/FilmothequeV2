@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Acceuil Filmothèque</title>
+    <link rel="stylesheet" href="/css/style.css">
     <div th:replace="fragments/head"></div>
 </head>
 <body>
@@ -13,6 +14,8 @@
             <div class="container">
                 <h1 class="jumbotron-heading">Tous nos films</h1>
                 <h3 class="jumbotron-heading" th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm:ss')}"></h3>
+                <p th:text="'Connexion le : ' + ${#temporals.format(session.dateConnexion, 'dd-MM-yyyy HH:mm:ss')}"></p>
+                <a href="/logout">Se déconnecter</a>
                 <p class="lead text-muted">Retrouvez toute la séléction de films, choisie pour vous par les équipes de l'ENI.</p>
             </div>
         </section>
@@ -41,7 +44,7 @@
             </div>
         </div>
     </main>
-    <div th:insert="fragments/footer"></div>
+    <div th:replace="fragments/footer"></div>
 </div>
 </body>
 </html>

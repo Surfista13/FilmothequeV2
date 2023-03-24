@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -45,11 +46,15 @@ public class MovieController {
      * @return renvoi vers la page d'accueil avec la liste des films
      */
     @GetMapping("/")
-    public String listeDesFilms(Model model){
+    public String listeDesFilms(Model model,HttpSession session){
         List<Movie> movies = movieService.getAllMovies();
         LocalDateTime date = LocalDateTime.now();
         model.addAttribute("movies", movies);
         model.addAttribute("localDateTime", date);
+        LocalDateTime dateConnexion= LocalDateTime.now();
+        if(session.getAttribute("dateConnexion") == null){
+            session.setAttribute("dateConnexion", dateConnexion);
+        }
         return "accueil";
     }
 
@@ -73,4 +78,9 @@ public class MovieController {
         return dataToReturn;
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
+    }
 }
