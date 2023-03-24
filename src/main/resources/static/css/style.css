@@ -18,3 +18,12 @@ body{
 .titre404{
     font-size: 7rem;
 }
+.mb-4{
+    border-radius: 10px;
+}
+.col-form-label{
+    font-weight: bold;
+}
+.form-control{
+    margin-top: 20px;
+}

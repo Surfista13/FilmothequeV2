@@ -10,7 +10,7 @@
     <div class="container">
         <div class="py-5 text-center">
             <img class="d-block mx-auto mb-4" th:src="@{${movie.get().urlImage}}" alt="" width="150" height="150">
-            <h2>Détails du film</h2>
+            <h2 th:text="${movie.get().title.toUpperCase()}">Détails du film</h2>
             <p class="lead">Retrouvez les détails du film séléctionné.</p>
         </div>
         <div class="bd-example">
