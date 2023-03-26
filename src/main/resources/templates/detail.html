@@ -10,8 +10,8 @@
     <div th:insert="fragments/header"></div>
     <div class="container">
         <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" id="imgDetail" th:src="@{${movie.get().urlImage}}" alt="" width="150" height="150">
-            <h2 th:text="${movie.get().title.toUpperCase()}">Détails du film</h2>
+            <img class="d-block mx-auto mb-4" id="imgDetail" th:src="@{${movie.urlImage}}" alt="" width="150" height="150">
+            <h2 th:text="${movie.title.toUpperCase()}">Détails du film</h2>
             <p class="lead">Retrouvez les détails du film séléctionné.</p>
         </div>
         <div class="bd-example">
@@ -19,25 +19,25 @@
                 <div class="form-group row">
                     <label for="genre" class="col-sm-2 col-form-label">Genre</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly="" class="form-control-plaintext" id="genre" th:value="${movie.get().genre.label}">
+                        <input type="text" readonly="" class="form-control-plaintext" id="genre" th:value="${movie.genre.label}">
                     </div>
                     <label for="annee" class="col-sm-2 col-form-label">Année</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly="" class="form-control-plaintext" id="annee" th:value="${movie.get().year}">
+                        <input type="text" readonly="" class="form-control-plaintext" id="annee" th:value="${movie.year}">
                     </div>
                     <label for="duree" class="col-sm-2 col-form-label">Durée (min)</label>
                     <div class="col-sm-10">
-                        <input type="number" readonly="" class="form-control-plaintext" id="duree" th:value="${movie.get().duration}">
+                        <input type="number" readonly="" class="form-control-plaintext" id="duree" th:value="${movie.duration}">
                     </div>
                     <label for="acteurs" class="col-sm-2 col-form-label">Acteur(s)</label>
                     <div class="col-sm-10">
                         <select name="acteurs" id="acteurs" multiple class="form-control">
-                            <option th:each="actor : ${movie.get().actors}" th:value="${actor.id}" th:text="${actor.firstName + ' ' + actor.lastName}"></option>
+                            <option th:each="actor : ${movie.actors}" th:value="${actor.id}" th:text="${actor.firstName + ' ' + actor.lastName}"></option>
                         </select>
                     </div>
                     <label for="synopsis" class="col-sm-2 col-form-label">Synopsis: </label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" name="synopsis" id="synopsis" rows="3" th:text="${movie.get().synopsis}"></textarea>
+                        <textarea class="form-control" name="synopsis" id="synopsis" rows="3" th:text="${movie.synopsis}"></textarea>
                     </div>
                 </div>
             </form>

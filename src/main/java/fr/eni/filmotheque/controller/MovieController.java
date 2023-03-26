@@ -73,7 +73,7 @@ public class MovieController {
             dataToReturn = "error";
             model.addAttribute("erreur", 404);
         } else {
-            model.addAttribute("movie", movie);
+            model.addAttribute("movie", movie.get());
             dataToReturn = "detail";
         }
         return dataToReturn;
