@@ -51,7 +51,7 @@ public class MovieServiceMock implements MovieService{
         this.movies.add(new Movie(1,"Le bon et la brute",1960,180,"On sait depuis longtemps que travailler avec du texte lisible,travailler avec du texte lisible",genres.get(4),participants.get(2)));
         this.movies.add(new Movie(2,"Heat",1995,120,"Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles",genres.get(2),participants.get(4)));
         this.movies.add(new Movie(3,"StarWars",1999,90,"Tous les générateurs de Lorem Ipsum sur Internet tendent à reproduire le même extrait sans fin",genres.get(8),participants.get(5)));
-        this.movies.add(new Movie(4,"Didier",1980,105,"L'extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux.",genres.get(7),participants.get(1)));
+        this.movies.add(new Movie(4,"Didier",1980,105,"L'extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux.est reproduit ci-dessous pour les curieux.",genres.get(7),participants.get(1)));
         this.movies.add(new Movie(5,"Men in black",2020,110,"Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé,College, en Virginie\"",genres.get(1),participants.get(0)));
 
         movies.get(0).setUrlImage("/images/1.png");

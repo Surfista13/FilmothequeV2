@@ -54,6 +54,7 @@ public class MovieController {
         LocalDateTime dateConnexion= LocalDateTime.now();
         if(session.getAttribute("dateConnexion") == null){
             session.setAttribute("dateConnexion", dateConnexion);
+            session.setAttribute("isConnected",false);
         }
         return "accueil";
     }

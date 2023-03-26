@@ -46,3 +46,35 @@ img.card-img-top{
     border-top-right-radius:30px;
     opacity: 0.9;
 }
+.box-shadow{
+    height: 100%;
+}
+.col-md-4{
+    padding-top: 30px;
+}
+#button_card{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.title_duration{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#button_connexion, #button_deconnexion{
+    margin-right: 30px;
+    color: white;
+}
+.login_message{
+    color: white;
+    margin: 0;
+    margin-right: 20px;
+}
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

@@ -27,16 +27,19 @@ public class ConnexionController {
 
     @PostMapping("/login")
     public String login(String login, String password, Model model, HttpSession session) {
+        boolean isConnected = false;
         Member visitor = new Member();
         visitor.setLogin(login);
         visitor.setPassword(password);
         if (memberService.authenticate(visitor).isPresent()) {
+            isConnected = true;
             session.setAttribute("login", login);
-            System.out.println("Connexion réussie");
+            session.setAttribute("isConnected",isConnected);
+            //System.out.println("Connexion réussie");
             return "redirect:/";
         } else {
             model.addAttribute("error", "Login ou mot de passe incorrect");
-            System.out.println("Connexion echouée");
+            //System.out.println("Connexion echouée");
             return "connexion";
         }
 }

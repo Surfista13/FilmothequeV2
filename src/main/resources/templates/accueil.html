@@ -14,8 +14,6 @@
             <div class="container">
                 <h1 class="jumbotron-heading">Tous nos films</h1>
                 <h3 class="jumbotron-heading" th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm:ss')}"></h3>
-                <p th:text="'Connexion le : ' + ${#temporals.format(session.dateConnexion, 'dd-MM-yyyy HH:mm:ss')}"></p>
-                <a href="/logout">Se déconnecter</a>
                 <p class="lead text-muted">Retrouvez toute la séléction de films, choisie pour vous par les équipes de l'ENI.</p>
             </div>
         </section>
@@ -26,16 +24,19 @@
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"  th:src="@{${movie.urlImage}}" data-holder-rendered="true">
                             <div class="card-body">
-                                <h5 class="my-0" th:text="${movie.title}"></h5>
+                                <div class="title_duration">
+                                    <h5 class="my-0" th:text="${movie.title}"></h5>
+                                    <small class="text-muted" th:text="${movie.duration} + ' min'"></small>
+                                </div>
                                 <h6 class="my-0" th:text="${movie.director.firstName + ' ' +movie.director.lastName }"></h6>
                                 <h6 class="my-0" th:text="${movie.genre.getLabel()}"></h6>
                                 <p class="card-text" th:text="${movie.synopsis}"></p>
-                                <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center" id="button_card">
                                     <div class="btn-group">
                                         <a  th:href="@{/detailfilm/{id}(id=${movie.id})}"><button type="button" class="btn btn-sm btn-outline-secondary">Détails</button></a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Modifier</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" th:disabled="${!session.isConnected}"> Modifier</button>
                                     </div>
-                                    <small class="text-muted" th:text="${movie.duration} + ' min'"></small>
+
                                 </div>
                             </div>
                         </div>
