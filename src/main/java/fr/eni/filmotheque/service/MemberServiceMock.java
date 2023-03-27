@@ -20,7 +20,10 @@ public class MemberServiceMock implements MemberService {
 
     @Override
     public Optional<Member> authenticate(Member member) {
-        Optional<Member> memberOptional = members.stream().filter(m -> m.getLogin().equals(member.getLogin()) && m.getPassword().equals(member.getPassword())).findFirst();
+        Optional<Member> memberOptional= Optional.empty();
+        if(member.getLogin()!=null && member.getPassword()!=null){
+            memberOptional = members.stream().filter(m -> m.getLogin().equals(member.getLogin()) && m.getPassword().equals(member.getPassword())).findFirst();
+        }
         return memberOptional;
     }
 

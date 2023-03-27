@@ -35,11 +35,9 @@ public class ConnexionController {
             isConnected = true;
             session.setAttribute("login", login);
             session.setAttribute("isConnected",isConnected);
-            //System.out.println("Connexion réussie");
             return "redirect:/";
         } else {
             model.addAttribute("error", "Login ou mot de passe incorrect");
-            //System.out.println("Connexion echouée");
             return "connexion";
         }
 }

@@ -8,18 +8,18 @@
 </head>
 <body>
     <div th:insert="fragments/header"></div>
-    <div class="container">
+    <div class="container" th:object="${movie}">
         <div class="py-5 text-center">
             <img class="d-block mx-auto mb-4" id="imgDetail" th:src="@{${movie.urlImage}}" alt="" width="150" height="150">
-            <h2 th:text="${movie.title.toUpperCase()}">Détails du film</h2>
+            <h2 th:text="*{title.toUpperCase()}">Détails du film</h2>
             <p class="lead">Retrouvez les détails du film séléctionné.</p>
         </div>
         <div class="bd-example">
             <form>
                 <div class="form-group row">
-                    <label for="genre" class="col-sm-2 col-form-label">Genre</label>
+                    <label for="genre.label" class="col-sm-2 col-form-label">Genre</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly="" class="form-control-plaintext" id="genre" th:value="${movie.genre.label}">
+                        <input type="text" readonly="" class="form-control-plaintext" th:field="*{genre.label}">
                     </div>
                     <label for="annee" class="col-sm-2 col-form-label">Année</label>
                     <div class="col-sm-10">

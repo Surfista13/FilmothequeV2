@@ -1,12 +1,17 @@
 package fr.eni.filmotheque.controller;
 
+import fr.eni.filmotheque.bo.Genre;
 import fr.eni.filmotheque.bo.Movie;
+import fr.eni.filmotheque.bo.Participant;
+import fr.eni.filmotheque.service.GenreService;
 import fr.eni.filmotheque.service.MovieService;
+import fr.eni.filmotheque.service.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
@@ -16,11 +21,16 @@ import java.util.Optional;
 @Controller
 public class MovieController {
 
-    private final MovieService movieService;
+    private MovieService movieService;
+    private GenreService genreService;
+    private ParticipantService participantService;
+
 
     @Autowired
-    public MovieController(MovieService movieService) {
+    public MovieController(MovieService movieService, GenreService genreService, ParticipantService participantService) {
         this.movieService = movieService;
+        this.genreService = genreService;
+        this.participantService = participantService;
     }
 
     /**
@@ -54,7 +64,6 @@ public class MovieController {
         LocalDateTime dateConnexion= LocalDateTime.now();
         if(session.getAttribute("dateConnexion") == null){
             session.setAttribute("dateConnexion", dateConnexion);
-            session.setAttribute("isConnected",false);
         }
         return "accueil";
     }
@@ -82,6 +91,27 @@ public class MovieController {
     @GetMapping("/logout")
     public String logout(HttpSession session){
         session.invalidate();
+        return "redirect:/";
+    }
+
+    @GetMapping("/addfilm")
+    public String addFilm(HttpSession session,Model model){
+        String  dataToReturn;
+        if(session.getAttribute("isConnected") != null){
+            List<Genre> genres = genreService.getAllGenres();
+            List<Participant> participants = participantService.getAllParticipants();
+            model.addAttribute("genres", genres);
+            model.addAttribute("participants", participants);
+            dataToReturn = "ajoutFilm";
+        } else {
+            dataToReturn = "redirect:/";
+        }
+        return dataToReturn;
+    }
+    @PostMapping("/addfilm")
+    public String addFilm(Movie movie,HttpSession session){
+        movie.setUrlImage("/images/1.png");
+        movieService.getAllMovies().add(movie);
         return "redirect:/";
     }
 }

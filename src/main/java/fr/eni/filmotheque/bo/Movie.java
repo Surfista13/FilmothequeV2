@@ -13,6 +13,7 @@ public class Movie {
     private Participant director;
     private String urlImage;
     private List<Participant> actors;
+    private List<Opinion> opinions;
 
     public  Movie(){
         setActors(null);
@@ -27,6 +28,7 @@ public class Movie {
         this.synopsis = synopsis;
         this.genre = genre;
         this.director = director;
+        this.opinions = new ArrayList<>();
     }
 
     @Override
@@ -119,5 +121,13 @@ public class Movie {
 
     public String getUrlImage() {
         return urlImage;
+    }
+
+    public List<Opinion> getOpinions() {
+        return opinions;
+    }
+
+    public void setOpinions(List<Opinion> opinions) {
+        this.opinions = opinions;
     }
 }

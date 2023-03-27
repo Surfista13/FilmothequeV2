@@ -10,7 +10,7 @@
           <h4 class="text-white">Menu</h4>
           <ul class="list-unstyled">
             <li><a href="/" class="text-white">Accueil</a></li>
-            <li><a href="/" class="text-white">Liste de films</a></li>
+            <li th:if="${session.isConnected != null}"><a href="/addfilm" class="text-white">Ajout film</a></li>
           </ul>
         </div>
       </div>
@@ -23,10 +23,10 @@
         <strong>Filmothèque</strong>
       </a>
       <div class="nav">
-        <p th:if="${session.isConnected == true}" th:text="${'Bonjour ' + session.login}" class="login_message"></p>
+        <p th:if="${session.isConnected !=null}" th:text="${'Bonjour ' + session.login}" class="login_message"></p>
         <div>
-          <a class="btn btn-sm btn-outline-secondary" href="/login" id="button_connexion" th:if="${session.isConnected == false}">Connexion</a>
-          <a class="btn btn-sm btn-outline-secondary" href="/logout" id="button_deconnexion"  th:if="${session.isConnected == true}">Déconnexion</a>
+          <a class="btn btn-sm btn-outline-secondary" href="/login" id="button_connexion" th:if="${session.isConnected == null}">Connexion</a>
+          <a class="btn btn-sm btn-outline-secondary" href="/logout" id="button_deconnexion"  th:if="${session.isConnected != null}">Déconnexion</a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

@@ -2,7 +2,6 @@ package fr.eni.filmotheque.service;
 
 import fr.eni.filmotheque.bo.Member;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface MemberService {
