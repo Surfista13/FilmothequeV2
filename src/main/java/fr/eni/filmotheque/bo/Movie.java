@@ -1,11 +1,20 @@
 package fr.eni.filmotheque.bo;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
+    @Min(value = 0, message = "L'id doit être supérieur à 0")
     private long id;
+    @NotBlank(message = "Le titre ne doit pas être vide")
+    @Size(min = 3, max = 50, message = "Le titre doit être compris entre 3 et 50 caractères")
     private String title;
+    @Digits(integer = 4, fraction = 0, message = "L'année doit être à un format valide (4 chiffres)")
+    @Min(value = 1900, message = "L'année doit être supérieure à 1900")
     private int year;
     private int duration;
     private String synopsis;

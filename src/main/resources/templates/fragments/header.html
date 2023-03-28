@@ -25,6 +25,8 @@
       <div class="nav">
         <p th:if="${session.isConnected !=null}" th:text="${'Bonjour ' + session.login}" class="login_message"></p>
         <div>
+          <a href="/afficheI18n/?language=fr">FR</a>
+          <a href="/afficheI18n/?language=en">EN</a>
           <a class="btn btn-sm btn-outline-secondary" href="/login" id="button_connexion" th:if="${session.isConnected == null}">Connexion</a>
           <a class="btn btn-sm btn-outline-secondary" href="/logout" id="button_deconnexion"  th:if="${session.isConnected != null}">Déconnexion</a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">

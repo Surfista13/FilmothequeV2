@@ -9,12 +9,11 @@ import fr.eni.filmotheque.service.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +24,7 @@ public class MovieController {
     private MovieService movieService;
     private GenreService genreService;
     private ParticipantService participantService;
+
 
 
     @Autowired
@@ -113,11 +113,25 @@ public class MovieController {
         return dataToReturn;
     }
     @PostMapping("/addfilm")
-    public String addFilm(Movie movie,HttpSession session){
+    public String addFilm(HttpSession session,@Valid @ModelAttribute Movie movie, BindingResult bindingResult, Model model){
+        String retour = "redirect:/";
+        if(bindingResult.hasErrors()){
+            model.addAttribute("movie", movie);
+            List<Genre> genres = genreService.getAllGenres();
+            List<Participant> participants = participantService.getAllParticipants();
+            model.addAttribute("genres", genres);
+            model.addAttribute("participants", participants);
+            System.out.println("test");
+            retour = "ajoutFilm";
+        }
         if(session.getAttribute("isConnected") != null){
             movie.setUrlImage("/images/1.png");
             movieService.getAllMovies().add(movie);
         }
-        return "redirect:/";
+        return retour;
+    }
+    @GetMapping("/afficheI18n")
+    public String afficheI18n (){
+        return "pageI18n";
     }
 }

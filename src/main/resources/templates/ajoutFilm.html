@@ -8,26 +8,27 @@
 <body>
 <div th:insert="fragments/header"></div>
 <form method="post" action="/addfilm" th:object="${movie}">
-    <label for="title">Titre</label>
-    <input type="text" name="title" id="title" required>
+    <label th:for="title">Titre</label>
+    <input type="text" th:field="*{title}" required>
     <label th:for="year">Année de sortie</label>
     <input type="number" th:field="*{year}" required>
-    <label>Réalisateur</label>
-    <select name="director" id="director" required>
+    <span class="alert alert-warning" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
+    <label th:for="director">Réalisateur</label>
+    <select th:field="*{director}" required>
         <option th:each="realisateur :${participants}" th:value="${realisateur.id}" th:text="${realisateur.firstName + ' ' + realisateur.lastName}"></option>
     </select>
-    <label for="duration">Durée</label>
-    <input type="number" name="duration" id="duration" min="0">
-    <label>Genre</label>
-    <select name="genre" id="genre" required>
+    <label th:for="duration">Durée</label>
+    <input type="number" th:field="*{duration}" min="0">
+    <label th:for="genre">Genre</label>
+    <select th:field="*{genre}" required>
       <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.label}"></option>
     </select>
-    <label for="actors">Acteur(s)</label>
-    <select name="actors" id="actors" multiple>
+    <label th:for="actors">Acteur(s)</label>
+    <select th:field="*{actors}" multiple>
       <option th:each="acteur :${participants}" th:value="${acteur.id}" th:text="${acteur.firstName + ' ' + acteur.lastName}"></option>
     </select>
-    <label>Synopsis</label>
-    <textarea name="synopsis" id="synopsis" required minlength="1" maxlength="250"></textarea>
+    <label th:for="synopsis">Synopsis</label>
+    <textarea th:field="*{synopsis}" required minlength="1" maxlength="250"></textarea>
     <button type="submit">Ajouter</button>
 
 
