@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
@@ -97,6 +98,9 @@ public class MovieController {
     @GetMapping("/addfilm")
     public String addFilm(HttpSession session,Model model){
         String  dataToReturn;
+        Movie movie = new Movie();
+        movie.setYear(2023);
+        model.addAttribute("movie", movie);
         if(session.getAttribute("isConnected") != null){
             List<Genre> genres = genreService.getAllGenres();
             List<Participant> participants = participantService.getAllParticipants();
@@ -110,8 +114,10 @@ public class MovieController {
     }
     @PostMapping("/addfilm")
     public String addFilm(Movie movie,HttpSession session){
-        movie.setUrlImage("/images/1.png");
-        movieService.getAllMovies().add(movie);
+        if(session.getAttribute("isConnected") != null){
+            movie.setUrlImage("/images/1.png");
+            movieService.getAllMovies().add(movie);
+        }
         return "redirect:/";
     }
 }

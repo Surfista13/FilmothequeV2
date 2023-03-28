@@ -34,9 +34,8 @@
                                 <div class="d-flex justify-content-between align-items-center" id="button_card">
                                     <div class="btn-group">
                                         <a  th:href="@{/detailfilm/{id}(id=${movie.id})}"><button type="button" class="btn btn-sm btn-outline-secondary">Détails</button></a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"> Modifier</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" th:if="${session.isConnected !=null}"> Avis</button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

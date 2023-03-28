@@ -7,11 +7,11 @@
 </head>
 <body>
 <div th:insert="fragments/header"></div>
-<form method="post" action="/addfilm">
+<form method="post" action="/addfilm" th:object="${movie}">
     <label for="title">Titre</label>
     <input type="text" name="title" id="title" required>
-    <label for="year">Année de sortie</label>
-    <input type="number" name="year" id="year" required>
+    <label th:for="year">Année de sortie</label>
+    <input type="number" th:field="*{year}" required>
     <label>Réalisateur</label>
     <select name="director" id="director" required>
         <option th:each="realisateur :${participants}" th:value="${realisateur.id}" th:text="${realisateur.firstName + ' ' + realisateur.lastName}"></option>
