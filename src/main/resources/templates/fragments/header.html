@@ -24,14 +24,16 @@
       </a>
       <div class="nav">
         <p th:if="${session.isConnected !=null}" th:text="${'Bonjour ' + session.login}" class="login_message"></p>
-        <div>
-          <a href="/afficheI18n/?language=fr">FR</a>
-          <a href="/afficheI18n/?language=en">EN</a>
+        <div class="btn_flag">
           <a class="btn btn-sm btn-outline-secondary" href="/login" id="button_connexion" th:if="${session.isConnected == null}">Connexion</a>
           <a class="btn btn-sm btn-outline-secondary" href="/logout" id="button_deconnexion"  th:if="${session.isConnected != null}">Déconnexion</a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <div class="flags">
+            <a href="/?language=en"><img src="/images/us-flag.png" width="30px" height="30px"></a>
+            <a href="/?language=fr"><img src="/images/fr-flag.png" width="30px" height="30px"></a>
+          </div>
         </div>
       </div>
     </div>

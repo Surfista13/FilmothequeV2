@@ -3,6 +3,7 @@ package fr.eni.filmotheque.service;
 import fr.eni.filmotheque.bo.Genre;
 import fr.eni.filmotheque.bo.Movie;
 import fr.eni.filmotheque.bo.Participant;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Profile("dev")
 public class MovieServiceMock implements MovieService{
     private List<Genre> genres;
     private List<Participant> participants;

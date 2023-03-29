@@ -1,9 +1,15 @@
 package fr.eni.filmotheque.bo;
 
+import javax.persistence.*;
+
+@Entity
 public class Opinion {
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int note;
     private String comment;
+    @ManyToOne
     private Member member;
 
     public Opinion() {

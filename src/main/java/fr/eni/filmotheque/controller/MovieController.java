@@ -112,7 +112,7 @@ public class MovieController {
         }
         return dataToReturn;
     }
-    @PostMapping("/addfilm")
+    @PostMapping("/addfilm") //Attention Bindingresult doit être placé après l'objet movie
     public String addFilm(HttpSession session,@Valid @ModelAttribute Movie movie, BindingResult bindingResult, Model model){
         String retour = "redirect:/";
         if(bindingResult.hasErrors()){
@@ -129,9 +129,5 @@ public class MovieController {
             movieService.getAllMovies().add(movie);
         }
         return retour;
-    }
-    @GetMapping("/afficheI18n")
-    public String afficheI18n (){
-        return "pageI18n";
     }
 }

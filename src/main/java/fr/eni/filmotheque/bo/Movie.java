@@ -1,13 +1,16 @@
 package fr.eni.filmotheque.bo;
 
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Movie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Min(value = 0, message = "L'id doit être supérieur à 0")
     private long id;
     @NotBlank(message = "Le titre ne doit pas être vide")
@@ -18,10 +21,15 @@ public class Movie {
     private int year;
     private int duration;
     private String synopsis;
+    @ManyToOne
     private Genre genre;
+    @ManyToOne
     private Participant director;
     private String urlImage;
+    @ManyToMany
     private List<Participant> actors;
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "movie_id")
     private List<Opinion> opinions;
 
     public  Movie(){
@@ -31,6 +39,16 @@ public class Movie {
     public Movie(long id, String title, int year, int duration, String synopsis, Genre genre, Participant director) {
         this();
         this.id = id;
+        this.title = title;
+        this.year = year;
+        this.duration = duration;
+        this.synopsis = synopsis;
+        this.genre = genre;
+        this.director = director;
+        this.opinions = new ArrayList<>();
+    }
+    public Movie(String title, int year, int duration, String synopsis, Genre genre, Participant director) {
+        this();
         this.title = title;
         this.year = year;
         this.duration = duration;

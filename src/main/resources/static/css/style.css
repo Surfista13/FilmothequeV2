@@ -76,5 +76,17 @@ img.card-img-top{
     display: flex;
     justify-content: center;
     align-items: center;
-
+}
+.flags{
+    margin: auto;
+    padding-left: 15px;
+}
+.flags a {
+    margin-right: 5px;
+}
+.btn_flag{
+    display: flex;
+    align-content: center;
+    vertical-align: center;
+    margin: 0;
 }
